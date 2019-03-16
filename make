@@ -1,9 +1,9 @@
 CC=g++
 CFLAGS=-c
 LDFLAGS=
-SOURCES=cиаод3/сиаод3.cpp cиаод3/pch.cpp
+SOURCES=сиаод3/сиаод3.cpp cиаод3/pch.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=Geometry
+EXECUTABLE=siaod
 
 all: $(SOURCES) $(EXECUTABLE)
 	
