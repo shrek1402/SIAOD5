@@ -356,5 +356,6 @@ int main()
         window.draw(triangleX);
         window.draw(triangleY);
         window.display();
+
     }
 }
