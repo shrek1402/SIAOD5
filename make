@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c
 LDFLAGS=
-SOURCES=сиаод3/сиаод3.cpp cиаод3/pch.cpp
+SOURCES=сиаод3/сиаод3.cpp сиаод3/pch.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=siaod
 
