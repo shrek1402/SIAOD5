@@ -1,6 +1,7 @@
 CC=g++
-CFLAGS=-c -Werror
-SOURCES=Сиаод3/сиаод3.cpp Сиаод3/pch.cpp
+CFLAGS=-c
+LDFLAGS=
+SOURCES=Сиаод3\сиаод3.cpp Сиаод3\pch.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=Geometry
 
