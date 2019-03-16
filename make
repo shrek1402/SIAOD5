@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c
 LDFLAGS=
-SOURCES=Сиаод3\сиаод3.cpp Сиаод3\pch.cpp
+SOURCES=cиаод3\сиаод3.cpp cиаод3\pch.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=Geometry
 
