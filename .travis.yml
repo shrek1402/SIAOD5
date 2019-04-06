@@ -1,43 +1,26 @@
-dist:     trusty    # èñïîëüçóåì Ubuntu 14.04 Trusty Tahr (à íå 12.02 Precise Pangolin)
-sudo:     required  # èñïîëüçóåì Virtual Machine (à íå Docker container)
-
-language: cpp       # íà ïðàêòèêå ðàçíèöû ìåæäó ñïåöèôè÷íûì äëÿ C++ îêðóæåíèåì
-                    # è, ñêàæåì, python -- íèêàêîé. Íî ïóñòü áóäåò cpp.
-
+language: cpp
 cache: cargo
+compiler: gcc
+dist: trusty
 
 os:
-    # áóäåì ïðîãîíÿòü CI è íà Linux, è íà Mac OS X...
     - linux
     - osx
 
 compiler:
-    # ... è ñ ïîìîùüþ GCC, è Clang
     - gcc
     - Clang
 
-env:
-    # ñïèñîê ïåðåìåííûõ îêðóæåíèÿ, âëèÿþùèõ íà ìàòðèöó ñáîðêè:
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+before_install:
+  # C++17
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
 
-matrix:
-    exclude:
-        # âðó÷íóþ èñêëþ÷èì íåíóæíûå ýëåìåíòû èç ìàòðèöû ñáîðêè:
-        - os:       osx
-          compiler: gcc
-
-        - os:  osx
-          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-
-        - os:  osx
-          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+install: 
+  # C++17
+  - sudo apt-get install -qq g++-6
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 
 script:
-    # ñêðèïò ñáîðêè è òåñòèðîâàíèÿ ïðîåêòà:
-    - make -f make
-
-before_install:
-    - eval "${MATRIX_EVAL}"
+  - g++ keyboard/pch.cpp keyboard/FileOpen.cpp keyboard/LITC.cpp keyboard/pch.cpp keyboard/keyboard.cpp -std=c++17 -o travis_gcc_cpp17
+  - 
